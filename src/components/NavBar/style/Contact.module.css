@@ -1,0 +1,22 @@
+.contact{
+    
+    display: flex;
+    height: 8vh;
+    background-color: rgb(9, 168, 9);
+    justify-content: flex-start;
+}
+
+
+.contact div{
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.contact div p{
+    color: #fff;
+    font-size: medium;
+    margin-left: 10px;
+}
