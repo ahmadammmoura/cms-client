@@ -5,10 +5,15 @@ import axios from "../../APIs/Axios";
 import parseJwt from "./jwt";
 import { useHistory } from "react-router-dom";
 import cookie from "react-cookies";
+import { useDispatch } from "react-redux";
+
+import { HandleUser } from "../../store/actions/index";
 
 function SignUp({ setHaveAcount }) {
   const [user, setUser] = useState({});
   const history = useHistory();
+  const dispatch = useDispatch();
+
   useEffect(() => {
     return () => {
       console.log("unmount");
@@ -34,6 +39,8 @@ function SignUp({ setHaveAcount }) {
     cookie.save("token", response.data.token);
 
     const obj = await parseJwt(response.data.token);
+
+    dispatch(HandleUser(obj));
 
     obj.role === "admin" ? history.push("/admin") : history.push("/customer");
   };

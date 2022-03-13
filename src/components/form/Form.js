@@ -8,15 +8,22 @@ function Form() {
 
   const HandelChange = (e) => {
     setComplaint({ ...complaint, [e.target.name]: e.target.value });
-    console.log(complaint);
+    
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const token = cookie.load("token");
+
+
+    const config = {
+      headers: { Authorization: `Bearer ${token}`}
+    };
     
-    const response = await axios.post("/signup", {...complaint,token:token});
+
+    const response = await axios.post("/customer/complaint", complaint, config);
+
 
   };
 
