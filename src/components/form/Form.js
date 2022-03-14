@@ -1,50 +1,29 @@
-import React, { useState } from "react";
-import style from "./Style/form.module.css";
-import cookie from "react-cookies";
+import React from "react";
 
-import axios from "../../APIs/Axios";
-function Form() {
-  const [complaint, setComplaint] = useState({});
+import { Form } from "react-bootstrap";
 
-  const HandelChange = (e) => {
-    setComplaint({ ...complaint, [e.target.name]: e.target.value });
-    
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    const token = cookie.load("token");
-
-
-    const config = {
-      headers: { Authorization: `Bearer ${token}`}
-    };
-    
-
-    const response = await axios.post("/customer/complaint", complaint, config);
-
-
-  };
+function ComplaintForm({HandelChange}) {
 
   return (
-    <form className={style.container} onSubmit={handleSubmit}>
-      <input
-        type="text"
-        placeholder="subject"
-        name="subject"
-        onChange={HandelChange}
-      />
-      <select name="isUrgent" onChange={HandelChange}>
-        <option value="0">its urgent</option>
-        <option value="true">yes</option>
-        <option value="false">no</option>
-      </select>
-      <textarea cols="30" rows="10" name="message" onChange={HandelChange} />
-
-      <input type="submit" />
-    </form>
+    <Form>
+      <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+        <Form.Label>Email address</Form.Label>
+        <Form.Control type="text" placeholder="subject" name="subject" onChange={HandelChange} />
+      </Form.Group>
+      <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+        <Form.Label>is Urgent</Form.Label>
+        <Form.Select aria-label="Default select example" name="isUrgent" onChange={HandelChange}>
+          <option>choose</option>
+          <option value="true">yes</option>
+          <option value="false">no</option>
+        </Form.Select>
+      </Form.Group>
+      <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+        <Form.Label>Example textarea</Form.Label>
+        <Form.Control as="textarea" rows={3} name="message" onChange={HandelChange} />
+      </Form.Group>
+    </Form>
   );
 }
 
-export default Form;
+export default ComplaintForm;
