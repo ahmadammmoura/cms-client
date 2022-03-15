@@ -1,11 +1,9 @@
-.complaint{
-    width: 50%;
-    background-color: aqua;
-    height: 20%;
-}
-
-.ssssssss{
-    width: 50%;
-    background-color: aqua;
-    height: 20%;
+.complaintContainer{
+    width: 90%;
+    margin: auto;
+    background-color: #fff;
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }

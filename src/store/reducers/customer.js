@@ -1,17 +1,16 @@
 const initialState = {
-    complaint:[]
+    customers:[]
   };
   
-  const userReducer = (state = initialState, action) => {
+  const customerReducer = (state = initialState, action) => {
     const { type, payload } = action;
-  
+    
+    console.log(payload)
     switch (type) {
-      case "NEW_COMPLAINT":
+      case "FETCH_USERS_SUCSES":
         return {
           ...state,
-          isLogIN: true,
-          role: payload.role,
-          username: payload.role,
+          customers:payload
         };
   
       default:
@@ -19,4 +18,4 @@ const initialState = {
     }
   };
   
-  export default userReducer;
+  export default customerReducer;

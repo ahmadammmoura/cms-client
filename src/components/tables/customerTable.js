@@ -25,9 +25,16 @@ function CustomerTable() {
     };
 
     const response = await axios.post("/customer/complaint", complaint, config);
-
+    setAllComplaint(response.data.complaint)
     handleClose();
   };
+
+  const handeleFilter = (e)=>{
+
+    console.log(e.target)
+
+    const filter = allComplaint.filter(item => item.Status === e.target.value);
+  }
 
   useEffect(() => {
     fetchComplaint();
@@ -42,11 +49,7 @@ function CustomerTable() {
 
     const response = await axios.get("/customer/complaint", config);
 
-    console.log(response.data)
-    setAllComplaint(response.data);
-    console.log(allComplaint)
-
-    
+    setAllComplaint(response.data);    
   };
   return (
     <div className={style.tableContainer}>
@@ -56,10 +59,10 @@ function CustomerTable() {
             filter complaint by
           </Dropdown.Toggle>
 
-          <Dropdown.Menu>
-            <Dropdown.Item href="#/action-1">resolved</Dropdown.Item>
-            <Dropdown.Item href="#/action-2">pending resolution</Dropdown.Item>
-            <Dropdown.Item href="#/action-3">dismissed</Dropdown.Item>
+          <Dropdown.Menu >
+            <Dropdown.Item href="#/action-1" value="resolved" onClick={handeleFilter}>resolved</Dropdown.Item>
+            <Dropdown.Item href="#/action-2"value="pending resolution" onClick={handeleFilter}>pending resolution</Dropdown.Item>
+            <Dropdown.Item href="#/action-3" value="dismissed" onClick={handeleFilter}>dismissed</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
 
@@ -78,14 +81,14 @@ function CustomerTable() {
           </tr>
         </thead>
         <tbody>
-          {allComplaint.map((item,index) => {
-            return(<tr>
+          {allComplaint.length ? allComplaint.map((item,index) => {
+            return(<tr key={item.id}>
               <td>{index +1}</td>
               <td>{item.subject}</td>
               <td>{item.isUrgent ? "true" : "false"}</td>
               <td>{item.Status}</td>
             </tr>);
-          })}
+          }) : null}
         </tbody>
       </Table>
       <CustomerModel

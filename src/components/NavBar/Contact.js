@@ -4,11 +4,11 @@ function Contact() {
   return (
     <div className={style.contact}>
         <div>
-            <i class="fa-solid fa-phone"></i>
+            <i className="fa-solid fa-phone"></i>
             <p>+962796670230</p>
         </div>
         <div>
-            <i class="fa-solid fa-location-dot"></i>
+            <i className="fa-solid fa-location-dot"></i>
             <p>Jordan,Amman, mecca street</p>
         </div>
     </div>

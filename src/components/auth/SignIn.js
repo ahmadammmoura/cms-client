@@ -21,7 +21,6 @@ function SignIn({ setHaveAcount }) {
 
   const HandelChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
-    console.log(user);
   };
 
   const handleSubmit = async (e) => {
@@ -32,7 +31,6 @@ function SignIn({ setHaveAcount }) {
     cookie.save("token", response.data);
 
     const obj = await parseJwt(response.data);
-
     dispatch(HandleUser(obj));
     obj.role === "admin" ? history.push("/admin") : history.push("/customer");
   };
