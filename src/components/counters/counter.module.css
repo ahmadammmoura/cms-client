@@ -1,4 +1,4 @@
-
+/* 
 
 
 .counters{
@@ -35,4 +35,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
+} */
+
+.VictoryPie{
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+svg{
+    width: 50%;
+    height: 50%;
 }

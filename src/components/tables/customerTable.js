@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Table, Dropdown, Button } from "react-bootstrap";
 import style from "./style/customerTable.module.css";
-import cookie from "react-cookies";
 import axios from "../../APIs/Axios";
 import CustomerModel from "../model/model";
+import { config } from "../auth/config";
 
 
 function CustomerTable() {
@@ -18,11 +18,7 @@ function CustomerTable() {
  
 
   const handleSubmit = async (e) => {
-    const token = cookie.load("token");
 
-    const config = {
-      headers: { Authorization: `Bearer ${token}` },
-    };
 
     const response = await axios.post("/customer/complaint", complaint, config);
     setAllComplaint(response.data.complaint)
@@ -31,9 +27,9 @@ function CustomerTable() {
 
   const handeleFilter = (e)=>{
 
-    console.log(e.target)
 
     const filter = allComplaint.filter(item => item.Status === e.target.value);
+      console.log(filter)
   }
 
   useEffect(() => {
@@ -41,12 +37,7 @@ function CustomerTable() {
   }, []);
 
   const fetchComplaint = async () => {
-    const token = cookie.load("token");
-
-    const config = {
-      headers: { Authorization: `Bearer ${token}` },
-    };
-
+    
     const response = await axios.get("/customer/complaint", config);
 
     setAllComplaint(response.data);    

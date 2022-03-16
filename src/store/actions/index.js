@@ -1,6 +1,5 @@
 import axios from '../../APIs/Axios'
-import cookie from 'react-cookies';
-
+import { config } from '../../components/auth/config';
 const USER_TYPE = 'USER_LOGIN'
 const USER_LOGOUT = 'USER_LOGOUT'
 const FETCH_USERS_SUCSES = 'FETCH_USERS_SUCSES'
@@ -42,12 +41,7 @@ export const fetchComplaint = () => {
 
 
   return (dispatch)=>{
-    const token = cookie.load("token");
-
-    const config = {
-      headers: { Authorization: `Bearer ${token}` },
-    };
-
+    
     axios.get("/admin/costumers", config)
     .then(response => {
       const users = response.data
