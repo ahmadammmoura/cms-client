@@ -7,7 +7,7 @@ function ComplaintForm({HandelChange}) {
   return (
     <Form>
       <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-        <Form.Label>Email address</Form.Label>
+        <Form.Label>subject</Form.Label>
         <Form.Control type="text" placeholder="subject" name="subject" onChange={HandelChange} />
       </Form.Group>
       <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">

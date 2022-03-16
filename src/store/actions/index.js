@@ -56,6 +56,7 @@ export const fetchComplaint = () => {
     })
     .catch(err => {
       const message =err.message
+      console.log(message)
     })
 
     

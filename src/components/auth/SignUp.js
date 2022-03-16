@@ -58,7 +58,7 @@ function SignUp({ setHaveAcount }) {
             value="admin"
             onChange={handelIsAdmin}
           />
-          <label for="IsAdmin"> i am an admin</label>
+          <label htmlFor="IsAdmin"> i am an admin</label>
         </div>
 
         <input
