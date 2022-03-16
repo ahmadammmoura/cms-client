@@ -1,5 +1,5 @@
 import axios from 'axios';
-export let url = 'http://localhost:8080/';
+export let url = 'https://cms-ahmad.herokuapp.com/';
 const instance = axios.create({
   baseURL: url,
 });
