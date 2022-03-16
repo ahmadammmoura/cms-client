@@ -22,7 +22,6 @@ function SignUp({ setHaveAcount }) {
 
   const HandelChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
-    console.log(user);
   };
 
   const handelIsAdmin = (e) => {

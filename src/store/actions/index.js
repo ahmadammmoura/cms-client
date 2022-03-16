@@ -45,7 +45,7 @@ export const fetchComplaint = () => {
     axios.get("/admin/costumers", config)
     .then(response => {
       const users = response.data
-      console.log(users)
+      
       dispatch(fetchUsersSucses(users))
     })
     .catch(err => {
